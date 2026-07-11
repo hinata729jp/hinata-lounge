@@ -401,3 +401,78 @@ footer .fine {
   .page-hero .lead { animation-delay: 0.65s; }
   @keyframes rise { to { opacity: 1; transform: translateY(0); } }
 }
+
+/* ============================================================
+   記事（ブログ）読み物モード
+   note.html / shelf.html の <body class="article"> だけに適用。
+   中央寄せの“ブランドLP”表現を抑え、左寄せの読み物に寄せる。
+   （film / bookfilm / guide / index には影響しない）
+   ============================================================ */
+
+/* --- ヒーローを、全画面表紙 → コンパクトな記事ヘッダーに --- */
+body.article .page-hero {
+  min-height: auto;
+  align-items: flex-start;     /* 中央 → 左寄せ */
+  text-align: left;
+  max-width: 40rem;            /* 本文カラムと同じ幅にそろえる */
+  margin: 0 auto;
+  padding: 7rem 1.5rem 1.4rem; /* 上は固定ヘッダー分だけ確保 */
+  background: none;            /* 派手なラジアルグラデを外す */
+}
+body.article .page-hero .eyebrow {
+  font-size: 0.7rem;
+  letter-spacing: 0.24em;
+  text-indent: 0.24em;
+  margin-bottom: 1rem;
+}
+body.article .page-hero h1 {
+  font-size: clamp(1.7rem, 4.4vw, 2.35rem);
+  letter-spacing: 0.02em;
+  text-indent: 0;
+  line-height: 1.55;
+  text-wrap: pretty;
+}
+body.article .page-hero .divider {
+  justify-content: flex-start;  /* 飾り線も左から */
+  margin: 1.3rem 0 1.1rem;
+}
+body.article .page-hero .lead {
+  max-width: none;
+  margin-top: 0;
+  font-size: 0.98rem;
+  line-height: 2.05;
+}
+
+/* --- 本文カラム上の余白を詰める --- */
+body.article .reading { padding-top: 0.5rem; }
+
+/* --- 章見出しを 中央 → 左寄せ ＋ 下罫線で記事セクションらしく --- */
+body.article .chapter {
+  text-align: left;
+  margin: 3.4rem 0 1.5rem;
+  padding-bottom: 0.85rem;
+  border-bottom: 1px solid var(--hair);
+}
+body.article .chapter:first-child { margin-top: 0.6rem; }
+body.article .chapter .ch-label {
+  font-size: 0.66rem;
+  letter-spacing: 0.24em;
+  text-indent: 0.24em;
+  margin-bottom: 0.6rem;
+}
+body.article .chapter h2 {
+  font-size: clamp(1.25rem, 3vw, 1.5rem);
+  letter-spacing: 0.03em;
+}
+body.article .chapter .star { display: none; } /* 見出し下の星は外す */
+
+/* --- 区切りは 中央の星飾り → 左寄せの細い罫に --- */
+body.article .rule-star { justify-content: flex-start; margin: 2.6rem 0; gap: 0.9rem; }
+body.article .rule-star .rule:last-child { display: none; }
+body.article .rule-star .rule:first-child { width: 44px; }
+
+/* --- 次の特典への導線も左寄せに --- */
+body.article .next { text-align: left; }
+
+/* --- 本文の可読性を少しだけ上げる --- */
+body.article .reading p { font-size: 1.02rem; }
